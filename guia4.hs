@@ -65,8 +65,22 @@ iesimoDigito n 1 = mod n 10
 iesimoDigito n i = iesimoDigito (div n 10) (i-1)
 
 --Ejercicio 9. Especificar e implementar una funcion esCapicua :: Integer ->Bool que dado n ∈ N≥0 determina si n es un numero capicua.
-esCapicua : Integer -> Bool
-esCapicua
+esCapicua :: Integer -> Bool
+esCapicua n
+    |n<10 = True
+    |otherwise = sacarUltimoN n ==
+
+sacarUltimoN :: Integer -> Integer
+sacarUltimoN n = mod n 10
+
+sacarPrimeroN :: Integer -> Integer
+sacarPrimeroN n = mod n (div n (sacarLargoN n)) 
+
+sacarLargoN :: Integer -> Integer
+sacarLargoN n
+    |n<10=1
+    |otherwise = sacarLargoN --tenes que terminar esto pajin
+
 
 --Ejercicio 10. Especificar, implementar y dar el tipo de las siguientes funciones
 
