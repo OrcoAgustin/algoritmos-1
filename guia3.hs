@@ -23,7 +23,7 @@ absoluto x
     | x > 0 = x
     | otherwise = x - (2 * x)
 
---b)maximoAbsoluto: devuelve el maaximo entre el valor absoluto de dos numeros enteros.
+--b)maximoAbsoluto: devuelve el maximo entre el valor absoluto de dos numeros enteros.
 maximoAbsoluto :: Int -> Int -> Int
 maximoAbsoluto x y 
     | absoluto(x) > absoluto(y) = absoluto(x) 
