@@ -65,21 +65,21 @@ iesimoDigito n 1 = mod n 10
 iesimoDigito n i = iesimoDigito (div n 10) (i-1)
 
 --Ejercicio 9. Especificar e implementar una funcion esCapicua :: Integer ->Bool que dado n ∈ N≥0 determina si n es un numero capicua.
-esCapicua :: Integer -> Bool
-esCapicua n
-    |n<10 = True
-    |otherwise = sacarUltimoN n ==
+--esCapicua :: Integer -> Bool
+--esCapicua n
+ --   |n<10 = True
+   -- |otherwise = sacarUltimoN n ==
 
-sacarUltimoN :: Integer -> Integer
-sacarUltimoN n = mod n 10
+--sacarUltimoN :: Integer -> Integer
+--sacarUltimoN n = mod n 10
 
-sacarPrimeroN :: Integer -> Integer
-sacarPrimeroN n = mod n (div n (sacarLargoN n)) 
+--sacarPrimeroN :: Integer -> Integer
+--sacarPrimeroN n = mod n (div n (sacarLargoN n)) 
 
-sacarLargoN :: Integer -> Integer
-sacarLargoN n
-    |n<10=1
-    |otherwise = sacarLargoN --tenes que terminar esto pajin
+--sacarLargoN :: Integer -> Integer
+--sacarLargoN n
+  --  |n<10=1
+   -- |otherwise = sacarLargoN --tenes que terminar esto pajin
 
 
 --Ejercicio 10. Especificar, implementar y dar el tipo de las siguientes funciones
@@ -103,3 +103,15 @@ f4 :: Integer -> Integer -> Integer
 f4 0 q = 1
 f4 n 1 = n 
 f4 n q = (f2 (2*n) q)-(f2 n q)  
+
+--Ejercicio 11. a) Especificar e implementar una funci´on eAprox :: Integer ->Float que aproxime el valor del numero e
+eAprox :: Integer -> Float
+eAprox x 
+    |a==0 = 1
+    |otherwise = 1/factorial(a) + eAprox(x-1)
+    where a = fromIntegral x
+
+factorial :: (Num a, Eq a) => a -> a 
+factorial x
+    |x==0 = 1
+    |otherwise = x * (factorial (x-1))
