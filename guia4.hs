@@ -115,3 +115,13 @@ factorial :: (Num a, Eq a) => a -> a
 factorial x
     |x==0 = 1
     |otherwise = x * (factorial (x-1))
+
+--Ejercicio 12) 
+--raizDe2Aprox :: Integer -> Float
+--raizDe2Aprox x = recursionParaAproximar
+
+
+recursionParaAproximar :: Integer -> Float
+recursionParaAproximar x 
+    |x==1 = 2
+    |otherwise = 2 + 1/recursionParaAproximar(x-1)
