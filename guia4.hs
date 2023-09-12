@@ -79,7 +79,9 @@ iesimoDigito n i = iesimoDigito (div n 10) (i-1)
 --sacarLargoN :: Integer -> Integer
 --sacarLargoN n
   --  |n<10=1
-   -- |otherwise = sacarLargoN --tenes que terminar esto pajin
+   -- |otherwise = sacarLargoN 
+
+--terminar en algun momento 
 
 
 --Ejercicio 10. Especificar, implementar y dar el tipo de las siguientes funciones
