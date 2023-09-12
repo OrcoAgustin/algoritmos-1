@@ -126,11 +126,11 @@ sumarN :: Integer -> [Integer] -> [Integer]
 sumarN n [x] = [n+x]
 sumarN n (x:xs) = [n+x] ++ sumarN n xs
 
---5. sumarElPrimero :: [Integer] -> [Integer] seg´un la siguiente especificaci´on:
+--5. sumarElPrimero :: [Integer] -> [Integer] segun la siguiente especificacion:
 sumarElPrimero :: [Integer] -> [Integer]
 sumarElPrimero (x:xs) = sumarN x (x:xs)
 
---6. sumarElUltimo :: [Integer] -> [Integer] seg´un la siguiente especificaci´on:
+--6. sumarElUltimo :: [Integer] -> [Integer] segun la siguiente especificacion:
 sumarElUltimo :: [Integer] -> [Integer]
 sumarElUltimo (x:xs) = sumarN (funcionAux36 xs ) (x:xs)
 
@@ -138,14 +138,14 @@ funcionAux36 :: [Integer] -> Integer --devuelve el ultimo
 funcionAux36 [x]=x
 funcionAux36 (x:xs) = funcionAux36 xs
 
---7. pares :: [Integer] -> [Integer] seg´un la siguiente especificaci´on:
+--7. pares :: [Integer] -> [Integer] segun la siguiente especificacion:
 pares :: [Integer] -> [Integer]
 pares []=[]
 pares (x:xs) 
     |mod x 2 == 0 = [x] ++ pares xs
     |otherwise = pares xs
 
---8. multiplosDeN :: Integer -> [Integer] -> [Integer] que dado un n´umero n y una lista xs, devuelve una lista con los elementos de xs m´ultiplos de n
+--8. multiplosDeN :: Integer -> [Integer] -> [Integer] que dado un numero n y una lista xs, devuelve una lista con los elementos de xs multiplos de n
 multiplosDeN :: Integer -> [Integer] -> [Integer]
 multiplosDeN n [] = []
 multiplosDeN n (x:xs) 
