@@ -164,4 +164,47 @@ funcionAux39 (x:xs) n
     |otherwise = funcionAux39 xs n
 
 
---falta el 4 y el 5
+--Ejercicio 4. Definir las siguientes funciones sobre listas de caracteres, interpretando una palabra como una secuencia de caracteres sin blancos:
+--sacarBlancosRepetidos :: [Char] -> [Char], que reemplaza cada subsecuencia de blancos contiguos de la primera lista por un solo blanco en la lista resultado.
+sacarBlancosRepetidos :: [Char] -> [Char]
+sacarBlancosRepetidos [x] = [x]
+sacarBlancosRepetidos (x:xs) 
+    |x==' ' && x==head(xs) = sacarBlancosRepetidos xs
+    |otherwise = [x] ++ sacarBlancosRepetidos xs
+
+--2. contarPalabras :: [Char] -> Integer, que dada una lista de caracteres devuelve la cantidad de palabras que tiene.
+contarPalabras [] = 0
+contarPalabras [x] = 1
+contarPalabras (x:xs) 
+    |head(xs)==' ' = 1 + contarPalabras xs 
+    |otherwise=contarPalabras xs
+
+--3. palabras :: [Char] -> [[Char]], que dada una lista arma una nueva lista con las palabras de la lista original.
+palabras :: [Char] -> [[Char]]
+palabras [] = []
+palabras (x:xs)
+    |x/=' ' = [funcionAux43 (x:xs)]++palabras (funcion2Aux43 xs)
+    |otherwise=palabras xs
+
+funcionAux43 :: [Char] -> [Char] --encuentra primera palabra
+funcionAux43 [] = []
+funcionAux43 (x:xs) 
+    |x/=' ' = [x]++funcionAux43 xs
+    |otherwise = funcionAux43 []
+
+funcion2Aux43 :: [Char] -> [Char] --elimina todo hasta el primer espacio -
+funcion2Aux43 [] = []
+funcion2Aux43 (x:xs) 
+    |x/=' ' = funcion2Aux43 xs
+    |otherwise = xs
+
+--4. palabraMasLarga :: [Char] -> [Char], que dada una lista de caracteres devuelve su palabra mas larga.
+palabraMasLarga :: [Char] -> [Char]
+palabraMasLarga []= []
+palabraMasLarga (x:xs) = funcionAux44 (x:xs)
+
+funcionAux44 :: [Char] -> Integer --cuenta largo de la primera palabra
+funcionAux44 []=0
+funcionAux44 (x:xs) 
+    |x/=' ' = funcionAux44 xs
+    |otherwise = 1 + funcionAux44 xs
