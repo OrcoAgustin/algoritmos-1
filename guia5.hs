@@ -200,11 +200,84 @@ funcion2Aux43 (x:xs)
 
 --4. palabraMasLarga :: [Char] -> [Char], que dada una lista de caracteres devuelve su palabra mas larga.
 palabraMasLarga :: [Char] -> [Char]
-palabraMasLarga []= []
-palabraMasLarga (x:xs) = funcionAux44 (x:xs)
+palabraMasLarga x = comparoPalabras (palabras x) (head (palabras x))
 
-funcionAux44 :: [Char] -> Integer --cuenta largo de la primera palabra
-funcionAux44 []=0
+funcionAux44 :: [Char] -> Int --largo de la palabra
+funcionAux44 [] = 0
 funcionAux44 (x:xs) 
-    |x/=' ' = funcionAux44 xs
-    |otherwise = 1 + funcionAux44 xs
+    | x == ' ' = 0  
+    | otherwise = 1 + funcionAux44 xs
+
+comparoPalabras :: [[Char]] -> [Char] -> [Char]
+comparoPalabras (x:xs) l 
+    | xs == [] = if funcionAux44 l > funcionAux44 x then l else x
+    | funcionAux44 x > funcionAux44 l = comparoPalabras xs x
+    | otherwise = comparoPalabras xs l
+
+--5. aplanar :: [[Char]] -> [Char], que a partir de una lista de palabras arma una lista de caracteres concatenandolas
+aplanar :: [[Char]] -> [Char]
+aplanar []=[]
+aplanar (x:xs) =  x ++ aplanar xs
+
+--6. aplanarConBlancos :: [[Char]] -> [Char], que a partir de una lista de palabras, arma una lista de caracteres concatenandolas e insertando un blanco entre cada palabra.
+aplanarConBlancos :: [[Char]] -> [Char]
+aplanarConBlancos []=[]
+aplanarConBlancos (x:xs)
+    | xs == [] = x
+    | otherwise = x ++ [' '] ++ aplanar xs
+
+--7. aplanarConNBlancos :: [[Char]] -> Integer -> [Char], que a partir de una lista de palabras y un entero n,arma una lista de caracteres concatenandolas e insertando n blancos entre cada palabra (n debe ser no negativo).
+aplanarConNBlancos :: [[Char]] -> Integer -> [Char]
+aplanarConNBlancos [] _ = []
+aplanarConNBlancos (x:xs)  n = x ++ funcionAux47 n ++ aplanar xs
+
+funcionAux47 :: Integer -> [Char]
+funcionAux47 0 = []
+funcionAux47 x = [' '] ++ funcionAux47 (x-1)
+
+
+--Ejercicio 5. Definir las siguientes funciones sobre listas:
+--1. sumaAcumulada :: (Num t) => [t] -> [t] segun la siguiente especificacion:
+sumaAcumulada :: (Num t) => [t] -> [t]
+sumaAcumulada [x] = [x]
+sumaAcumulada l =sumaAcumulada (sacarUltimo l ) ++ [funcionAux51 l]  
+
+funcionAux51 :: (Num t) => [t] -> t --suma los anteriores
+funcionAux51 [] = 0
+funcionAux51 (x:xs) = x + funcionAux51 xs
+
+sacarUltimo :: (Num t) => [t] -> [t]
+sacarUltimo (x:xs) 
+    | null xs = []
+    | otherwise = x : sacarUltimo xs
+
+--2. descomponerEnPrimos :: [Integer] -> [[Integer]] segun la siguiente especificacion:
+descomponerEnPrimos :: [Integer] -> [[Integer]]
+descomponerEnPrimos [] = []
+descomponerEnPrimos (x:xs) = funcionAux52 x 2 : descomponerEnPrimos xs
+
+funcionAux52 :: Integer -> Integer -> [Integer] --encuentra primos de n     m debe ser 2
+funcionAux52 n m 
+    |n == 0 || n == 1 = []  
+    |esPrimo n = [n]                     
+    |mod n (proxPrimo m) == 0 = m : funcionAux52 (div n m) (proxPrimo m)
+    |otherwise = funcionAux52 n (proxPrimo (m+1))
+
+proxPrimo :: Integer -> Integer
+proxPrimo x 
+    |esPrimo x = x
+    |otherwise = proxPrimo x+1
+
+--usamos la funcion es primo de guia 4
+
+esPrimo :: Integer ->Bool
+esPrimo n | menorDivisor n == n = True
+          | otherwise = False
+
+menorDivisor :: Integer ->Integer
+menorDivisor n = menorDivisorHasta n 2
+
+menorDivisorHasta :: Integer -> Integer -> Integer 
+menorDivisorHasta n q | mod n q == 0 = q
+                      | otherwise = menorDivisorHasta n (q+1)
+
