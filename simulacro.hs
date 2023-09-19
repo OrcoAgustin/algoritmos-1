@@ -78,4 +78,9 @@ amigosDe2 y (a,b)
 --
 
 personaConMasAmigos :: [(String,String)] -> String
-personaConMasAmigos [(w,z)] = w
+personaConMasAmigos l = p (personas l) l 
+    where p [x] _ = x
+          p [a,b] _ |length(amigosDe a l)> length (amigosDe b l) = a
+                    |otherwise = b
+          p (x:xs) l |length(amigosDe x l)> length (p xs l) = x
+                     |otherwise = p xs l
