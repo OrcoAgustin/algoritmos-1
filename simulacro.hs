@@ -1,3 +1,4 @@
+module Simulacro where
 --
 --problema relacionesValidas (relaciones: seq⟨String × String⟩) : Bool {
 --requiere: {True}
