@@ -85,3 +85,25 @@ personaConMasAmigos l = p (personas l) l
                     |otherwise = b
           p (x:xs) l |length(amigosDe x l)> length (p xs l) = x
                      |otherwise = p xs l
+
+
+
+
+
+
+
+-- Problema personaConMasAmigos
+personaConMasAmigos :: [(String,String)] -> String
+personaConMasAmigos rs = (maximo (personas rs) (cantidadDeAmigos (listaPersonas rs)))
+
+cantidadDeAmigos :: [String] -> [(String,String)] -> [Int]
+cantidadDeAmigos [] _ = []
+cantidadDeAmigos (p:ps) rs = (cantidadDeAmigosDe p rs) : (cantidadDeAmigos ps rs)    
+
+maximo :: [String] -> [Int] -> String
+maximo [p] _ = p
+maximo (p0:p1:ps) (c0:c1:cs)  | c0 > c1   = maximo (p0:ps) (c0:cs)
+                              | otherwise = maximo (p1:ps) (c1:cs)
+
+cantidadDeAmigosDe :: String -> [(String,String)] -> Int
+cantidadDeAmigosDe p rs = length (amigosDe p rs)
