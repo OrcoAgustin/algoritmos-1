@@ -289,5 +289,3 @@ def viajeroTemporalFanAristotelesFor(partida:int):
             print("Viajo veinte años al pasado, estamos en el año:" + str(i))
     print("Esto es lo que mas nos acercamos!")
     
-
-viajeroTemporalFanAristotelesFor(-100)
