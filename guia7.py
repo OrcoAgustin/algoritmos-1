@@ -1,4 +1,5 @@
 import math 
+import random
 
 #Ejercicio 1. Codificar en Python las siguientes funciones sobre secuencias:
 #1. problema pertenece
@@ -59,7 +60,7 @@ def palabraLarga(lista:[str])->bool:
     return res
 
 
-#6. Dado un texto en formato string, devolver verdadero si es pal´ındromo (se lee igual en ambos sentidos), falso en caso
+#6. Dado un texto en formato string, devolver verdadero si es palındromo (se lee igual en ambos sentidos), falso en caso
 # contrario.
 def palindromo(palabra:str)->bool:
     inicio=0
@@ -76,7 +77,7 @@ def palindromo(palabra:str)->bool:
     return res
 
 
-#7. Analizar la fortaleza de una contrase˜na. El par´ametro de entrada de la funci´on ser´a un string con la contrase˜na a
+#7. Analizar la fortaleza de una contrase˜na. El parametro de entrada de la funcion sera un string con la contrase˜na a
 # analizar, y la salida otro string con tres posibles valores: VERDE, AMARILLA y ROJA. Nota: en python la “˜n/N” ˜
 # es considerado un caracter especial y no se comporta como cualquier otra letra.
 def contra(password:str)->str:
@@ -119,7 +120,7 @@ def tieneNum(password:str)->bool:
 
 #8. Dada una lista de tuplas, que representa un historial de movimientos en una cuenta bancaria, devolver el saldo actual.
 # Asumir que el saldo inicial es 0. Las tuplas tienen una letra que nos indica el tipo de movimiento “I” para ingreso de
-# dinero y “R” para retiro de dinero, y adem´as el monto de cada operaci´on.
+# dinero y “R” para retiro de dinero, y ademas el monto de cada operacion.
 def operacionesBancarias(movimientos:[(str,int)])->int:
     iterador=0
     saldo=0
@@ -135,7 +136,7 @@ def operacionesBancarias(movimientos:[(str,int)])->int:
     return saldo
 
 
-#9. Recorrer una palabra en formato string y devolver True si ´esta tiene al menos 3 vocales distintas y False en caso
+#9. Recorrer una palabra en formato string y devolver True si esta tiene al menos 3 vocales distintas y False en caso
 # contrario.
 def tresVocales(palabra:str)->str:
     a=0
@@ -169,8 +170,8 @@ def tresVocales(palabra:str)->str:
 
 
 #2. Segunda Parte
-#1. Dada una lista de n´umeros, en las posiciones pares borra el valor original y coloca un cero. Esta funci´on modifica el
-# par´ametro ingresado, es decir, la lista es un par´ametro de tipo inout.
+#1. Dada una lista de numeros, en las posiciones pares borra el valor original y coloca un cero. Esta funcion modifica el
+# parametro ingresado, es decir, la lista es un parametro de tipo inout.
 def cambioNPares(lista:[int])->None:
     iterador=0
     while iterador < len(lista):
@@ -180,7 +181,7 @@ def cambioNPares(lista:[int])->None:
 
 
 #2. Lo mismo del punto anterior pero esta vez sin modificar la lista original, devolviendo una nueva lista, igual a la anterior
-# pero con las posiciones pares en cero, es decir, la lista pasada como par´ametro es de tipo in
+# pero con las posiciones pares en cero, es decir, la lista pasada como parametro es de tipo in
 def cambioNParesOut(lista:[int])->None:
     iterador=0
     res=[0]
@@ -194,7 +195,7 @@ def cambioNParesOut(lista:[int])->None:
 
 
 #3. Dada una cadena de caracteres devuelva una cadena igual a la anterior, pero sin las vocales. No se agregan espacios,
-# sino que borra la vocal y concatena a continuaci´on.
+# sino que borra la vocal y concatena a continuacion.
 def sacaVocal(lista:[str])->[str]:
     i=0
     while i <len(lista) :
@@ -246,8 +247,8 @@ def noPerteneceALista(lista:[str],e:str)->bool:
             i+=1
 
 
-#Ejercicio 3. Implementar una funci´on para conocer el estado de aprobaci´on de una materia a partir de las notas obtenidas
-# por un/a alumno/a cumpliendo con la siguiente especificaci´on:
+#Ejercicio 3. Implementar una funcion para conocer el estado de aprobacion de una materia a partir de las notas obtenidas
+# por un/a alumno/a cumpliendo con la siguiente especificacion:
 def aprobado(notas:[int])->int:
     if notasAprobadas(notas) and promedio(notas)>=7:
         return 1
@@ -274,7 +275,7 @@ def promedio(notas:[int])->float:
 
 
 #Ejercicio 4. 
-#1. Implementar una funci´on para construir una lista con los nombres de mis estudiantes. La funci´on solicitar´a al usuario
+#1. Implementar una funcion para construir una lista con los nombres de mis estudiantes. La funcion solicitara al usuario
 # los nombres hasta que ingrese la palabra “listo”. Devuelve la lista con todos los nombres ingresados.
 def listaEstudiantes()->[str]:
     res=[]
@@ -287,7 +288,7 @@ def listaEstudiantes()->[str]:
     return res
 
 
-#2. Implementar una funci´on que devuelve una lista con el historial de un monedero electr´onico (por ejemplo la SUBE).
+#2. Implementar una funcion que devuelve una lista con el historial de un monedero electronico (por ejemplo la SUBE).
 def sube()->[(str,int)]:
     saldo=0
     operacion=""
@@ -311,20 +312,74 @@ def sube()->[(str,int)]:
     return historial
 
 
-#3. Vamos a escribir un programa para simular el juego conocido como 7 y medio. El mismo deber´a generar un n´umero
-# aleatorio entre 0 y 12 (excluyendo el 8 y 9) y deber´a luego preguntarle al usuario si desea seguir sacando otra “carta”
-# o plantarse. En este ´ultimo caso el programa debe terminar. Los n´umeros aleatorios obtenidos deber´an sumarse seg´un
-# el n´umero obtenido salvo por las “figuras” (10, 11 y 12) que sumar´an medio punto cada una. El programa debe ir
-# acumulando los valores y si se pasa de 7.5 debe informar que el usuario ha perdido. Al finalizar la funci´on devuelve
-# el historial de “cartas” que hizo que el usuario gane o pierda. Para generar n´umeros pseudo-aleatorios entre 1 y 12
-# utilizaremos la funci´on random.randint(1,12). Al mismo tiempo, la funci´on random.choice() puede ser de gran
+#3. Vamos a escribir un programa para simular el juego conocido como 7 y medio. El mismo debera generar un numero
+# aleatorio entre 0 y 12 (excluyendo el 8 y 9) y debera luego preguntarle al usuario si desea seguir sacando otra “carta”
+# o plantarse. En este ultimo caso el programa debe terminar. Los numeros aleatorios obtenidos deberan sumarse segun
+# el numero obtenido salvo por las “figuras” (10, 11 y 12) que sumaran medio punto cada una. El programa debe ir
+# acumulando los valores y si se pasa de 7.5 debe informar que el usuario ha perdido. Al finalizar la funcion devuelve
+# el historial de “cartas” que hizo que el usuario gane o pierda. Para generar numeros pseudo-aleatorios entre 1 y 12
+# utilizaremos la funcion random.randint(1,12). Al mismo tiempo, la funcion random.choice() puede ser de gran
 # ayuda a la hora de repartir cartas.
-
-##wtf
-
+def sieteYMedio()->[int]:
+    cartas=0
+    cartanueva = random.randint(1,12)
+    #jugada incial
+    while cartanueva==8 or cartanueva==9:
+        cartanueva = 0
+        cartanueva = random.randint(1,12)
+    jugadas=[cartanueva]
+    if cartanueva==10 or cartanueva==11 or cartanueva==12:
+        cartas+=(cartanueva/2)
+    else:
+        cartas+=cartanueva
+    print("tu carta es:")
+    print(cartanueva)
+    print("si desea plantarse ingrese p,si desea pedir otra carta ingrese c")
+    decision=input()
+    #si no se planta
+    while decision != "p":
+        if decision=="c":
+            cartanueva=0
+            cartanueva = random.randint(1,12)
+            while cartanueva==8 or cartanueva==9:
+                cartanueva = 0
+                cartanueva = random.randint(1,12)
+            jugadas.append(cartanueva)
+            if cartanueva==10 or cartanueva==11 or cartanueva==12:
+                cartas+=cartanueva/2
+            else:
+                cartas+=cartanueva
+            print("tu carta es:")
+            print(cartanueva)
+            if cartas>7.5:
+                print("perdiste")
+                return jugadas
+            print("si desea plantarse ingrese p,si desea pedir otra carta ingrese c")
+            decision=input()
+    #si se planta
+    if decision == "p":
+        print("te plantaste con:")
+        print(cartas)
+        print("la proxima carta habria sido:")
+        cartanueva = 0
+        cartanueva = random.randint(1,12)
+        while cartanueva==8 or cartanueva==9:
+            cartanueva = 0
+            cartanueva = random.randint(1,12)
+        if cartanueva==10 or cartanueva==11 or cartanueva==12:
+            cartas+=cartanueva/2
+        else :
+            cartas+=cartanueva
+        print(cartanueva)
+        if cartas>7.5:
+            print("habrias perdido")
+        else:
+            print("habrias ganado")
+        return jugadas
+        
 
 
 
 array=[4,4,0,10]
 arrayPalabra=["a","a","u","r","a","u","r"]        
-print(subec())
+print(sieteYMedio())
